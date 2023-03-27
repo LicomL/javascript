@@ -1,0 +1,43 @@
+// Define as classes de armadura
+const armorClasses = {
+  F: 0.05,
+  E: 0.10,
+  D: 0.15,
+  C: 0.30,
+  B: 0.50,
+  A: 0.60,
+  S: 0.80,
+};
+
+// Recebe os valores de entrada do usuário
+const diceValue = parseInt(prompt("Digite o valor do dado: "));
+const weaponDamage = parseInt(prompt("Digite o valor do dano da arma: "));
+const armorClass = prompt("Digite a classe de armadura do atacado (F, E, D, C, B, A ou S): ");
+
+// Calcula o valor final do ataque
+const damageReduction = weaponDamage * armorClasses[armorClass];
+const finalDamage = diceValue * weaponDamage - damageReduction;
+
+// Exibe o resultado
+console.log(`O valor final do ataque é ${finalDamage}.`);
+
+// Recebe o valor do dano atual do usuário
+const currentDamage = parseInt(prompt("Digite o valor do seu dano atual: "));
+
+// Recebe o valor do dado a ser rolado no formato "XdY"
+const diceInput = prompt("Digite o valor do dado a ser rolado no formato XdY: ");
+
+// Separa o número de dados e o número de faces do dado
+const [numDice, numFaces] = diceInput.split("d");
+
+// Gera um valor aleatório entre 1 e o número de faces do dado, para cada dado
+let totalRoll = 0;
+for (let i = 0; i < numDice; i++) {
+  totalRoll += Math.floor(Math.random() * numFaces) + 1;
+}
+
+// Calcula o valor final do ataque adicionando o valor aleatório gerado ao dano atual do usuário
+const finalDamage = currentDamage + totalRoll;
+
+// Exibe o resultado
+console.log(`O valor final do ataque é ${finalDamage}.`);
